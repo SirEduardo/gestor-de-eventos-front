@@ -3,14 +3,23 @@ import { createLoading } from "../../src/components/loading/loading";
 import Home from "../../src/pages/Home/home";
 import { fetchWrapper } from "../api/api";
 
-export const doLogin = async (credentials) => {
+export const doLogin = async (e) => {
+  e.preventDefault()
   
-  const { email, password } = credentials
+  const form = e.target;
 
-  const body = {
-    email,
-    password
-  };
+  const email = form.querySelector('input#email').value;
+  const password = form.querySelector('input#password').value;
+
+  if (!email || !password) {
+      alert("Email and Password are required");
+      return;
+  }
+
+  const body =({
+      email,
+      password
+  });
 
   const loadingElement = createLoading();
   document.body.appendChild(loadingElement);
@@ -28,6 +37,8 @@ export const doLogin = async (credentials) => {
 
     if (!res.ok) {
       const errorData = await res.json();
+      console.error("Error response:", errorData);
+      
       throw new Error(errorData.message || "Login failed. Please try again.");
     }
 
