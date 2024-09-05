@@ -5,13 +5,23 @@ import { doLogin } from "./doLogin";
 export const doRegister = async (e) => {
   e.preventDefault();
 
-  const [userNameInput, emailInput, passwordInput] = e.target;
+ 
+  const form = e.target;
 
-  const body = {
-    userName: userNameInput.value,
-    email: emailInput.value,
-    password: passwordInput.value,
-  };
+  const username = form.querySelector('#username').value;
+  const email = form.querySelector('#email').value;
+  const password = form.querySelector('#password').value;
+
+  if (!username || !email || !password) {
+      alert("All fields are required");
+      return;
+  }
+
+  const body =({
+      userName: username,
+      email,
+      password,
+  });
 
   const loadingElement = createLoading();
   document.body.appendChild(loadingElement);
@@ -32,8 +42,8 @@ export const doRegister = async (e) => {
       console.log("Registration successful:", dataRes);
 
       await doLogin ({
-        email: emailInput.value,
-        password: passwordInput.value
+        email: email,
+        password: password
       })
     } else {
       const errorData = await res.json();
