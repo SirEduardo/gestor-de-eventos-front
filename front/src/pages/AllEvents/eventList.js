@@ -15,7 +15,6 @@ const EventList = async () => {
   const hideLoading = () => div.removeChild(loadingElement);
 
   const userEmail = localStorage.getItem("userEmail");
-
   const token = localStorage.getItem("token");
   const userId = localStorage.getItem("userId")
 
@@ -39,8 +38,9 @@ const EventList = async () => {
           hour: "2-digit",
           minute: "2-digit",
         });
-
+        
         const creatorName = event.createdBy[0].userName
+        const creatorId = event.createdBy[0]._id
 
         const eventItem = document.createElement("div");
         eventItem.className = "event-item";
@@ -70,7 +70,7 @@ const EventList = async () => {
               return;
             }
 
-            if (!event.createdBy || event.createdBy.length === 0 || userId !== event.createdBy[0]._id) {
+            if (!event.createdBy || event.createdBy.length === 0 || userId !== creatorId) {
               alert("Este usuario no puede eliminar este evento")
               return
             }
@@ -98,7 +98,7 @@ const EventList = async () => {
         eventList.appendChild(eventItem);
       }
     } else {
-      eventList.innerHTML = "<p>No se encontraron eventos.</p>";
+      eventList.innerHTML = '<p style="color: white;">No se encontraron eventos.</p>';
     }
   } catch (error) {
     eventList.innerHTML = "<p>Hubo un error cargando eventos.</p>";
