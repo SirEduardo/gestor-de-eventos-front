@@ -1,0 +1,16 @@
+:root{
+    --hovered-background: rgb(5, 21, 55);
+}
+
+.button{
+    border-radius: 1000px;
+    padding: 8px 10px;
+    font-size: 14px;
+    border: none;
+    cursor: pointer;
+    background-color: #579bfa;
+}
+.button:hover{
+    background-color: var(--hovered-background);
+    color: white
+}

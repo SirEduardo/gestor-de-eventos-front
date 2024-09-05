@@ -1,0 +1,59 @@
+:root{
+    --hovered-background: rgb(5, 21, 55);
+}
+
+.event-list{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+    position: relative;
+    top: 100px;
+    z-index: 1;
+
+}
+
+.event-item{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 5%;
+    padding: 50px 30px;
+    background-color: var(--hovered-background);
+    color: white;
+}
+.event-item img{
+    width: 100px;
+}
+
+.btn-div{
+    display: flex;
+    flex-direction: column;
+    padding-top: 20px;
+    gap: 20px;
+}
+.detail-btn{
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #579bfa;
+    
+}
+.delete-btn{
+    cursor: pointer;
+    padding: 5px 10px;
+    background-color: red;
+    color: white;
+    border: none;
+    border-radius: 5px;
+}
+
+@media (max-width: 600px) {
+    .event-list {
+        min-height: 1100px;
+        flex-direction: column;
+    }
+}

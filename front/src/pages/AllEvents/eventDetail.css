@@ -1,0 +1,15 @@
+.event-detail{
+    display: flex;
+    height: 90vh;
+    justify-content: center;
+    align-items: center;
+    gap: 90px;
+
+}
+#confirm-attendance{
+    cursor: pointer;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #579bfa;
+}

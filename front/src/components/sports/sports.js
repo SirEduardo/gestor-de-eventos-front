@@ -1,0 +1,1 @@
+export const sports = ["Fútbol", "Baloncesto", "Tenis", "Running", "Calistenia"];

@@ -1,0 +1,7 @@
+.login-form{
+    display: flex;
+    flex-direction: column;
+    border-radius: 8px;
+    padding: 50px;
+    gap: 20px;
+}
