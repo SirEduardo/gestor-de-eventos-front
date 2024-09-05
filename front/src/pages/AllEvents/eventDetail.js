@@ -10,6 +10,7 @@ import "./eventDetail.css";
 import EventList from "./eventList";
 
 const EventDetail = async (id, userEmail) => {
+  
   const div = createPage("events");
   const eventDetail = document.createElement("div");
   eventDetail.className = "event-detail";
@@ -56,12 +57,13 @@ const EventDetail = async (id, userEmail) => {
       try {
         showLoading();
         const attendeeRes = await getAttendeeById(userEmail);
-        const attendeeData = await attendeeRes.json();
         hideLoading();
-
-        const isAttending = attendeeData.events.some(
+        console.log(attendeeRes);
+        
+        const isAttending = attendeeRes.events.some(
           (attendedEvent) => attendedEvent._id === id
         );
+        
 
         const confirmButton = eventDetail.querySelector("#confirm-attendance");
         confirmButton.textContent = isAttending
