@@ -5,8 +5,10 @@ export const getAttendees = () => {
     return fetchWrapper({ endpoint: "/attendees" })
 }
 
-export const getAttendeeById = (email) => {
-    return fetchWrapper({ endpoint: `/attendees/${email}` })
+export const getAttendeeById = async (email) => {
+    const res = await fetchWrapper({ endpoint: `/attendees/${email}` })
+    const data = res.json()
+    return data
 }
 
 export const confirmAttendance = (eventId, token) => {
