@@ -7,9 +7,9 @@ export const RegisterForm = (form) => {
     form.className = "register-form"
 
     form.innerHTML = `
-    ${FieldForm({ labelText: "Username" })}
-    ${FieldForm({ labelText: "Email", type: "email" })}
-    ${FieldForm({ labelText: "Password", type: "password" })}
+    ${FieldForm({ labelText: "Username", id: "username" })}
+    ${FieldForm({ labelText: "Email", type: "email", id: "email" })}
+    ${FieldForm({ labelText: "Password", type: "password", id:"password" })}
     
     `  
     form.append(Button({ text: "Register", fnc: (e) => {
