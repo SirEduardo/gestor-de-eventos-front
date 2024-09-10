@@ -3,24 +3,21 @@ import { fetchWrapper } from "../api/api";
 import { doLogin } from "./doLogin";
 
 export const doRegister = async (e) => {
-  e.preventDefault();
+  e.preventDefault()
 
- 
-  const form = e.target;
+  const userName = document.getElementById("userName").value;
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
 
-  const username = form.querySelector('#username').value;
-  const email = form.querySelector('#email').value;
-  const password = form.querySelector('#password').value;
-
-  if (!username || !email || !password) {
+  if (!userName || !email || !password) {
       alert("All fields are required");
       return;
   }
 
   const body =({
-      userName: username,
+      userName,
       email,
-      password,
+      password
   });
 
   const loadingElement = createLoading();
@@ -33,22 +30,21 @@ export const doRegister = async (e) => {
       body,
     });
 
-    if (res.error) {
-      throw new Error(res.error);
+    if (!res.ok) {
+      const errorData = await res.json().catch(() => ({ message: "Unknown error" }));
+      alert(errorData.message || "Error during registration.");
+      throw new Error(errorData.message || "Error during registration.");
     }
 
-    if (res.ok) {
       const dataRes = await res.json();
       console.log("Registration successful:", dataRes);
 
-      await doLogin ({
-        email: email,
-        password: password
+       await doLogin ({
+        email,
+        password
       })
-    } else {
-      const errorData = await res.json();
-      throw new Error(errorData.message || "Error during registration.");
-    }
+
+ 
   } catch (error) {
     console.error("Error during registration:", error);
     alert(error.message || "An error occurred during registration.");
