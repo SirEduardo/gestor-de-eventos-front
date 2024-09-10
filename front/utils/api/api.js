@@ -1,4 +1,4 @@
-const API_URL = "https://project-10-back-gamma.vercel.app/"
+const API_URL = "http://localhost:3000/api/v1"
 
 export const fetchWrapper = async ({
   endpoint,
