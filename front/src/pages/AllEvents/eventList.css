@@ -4,14 +4,10 @@
 
 .event-list{
     display: flex;
-    height: 90vh;
+    height: 89vh;
     justify-content: center;
     align-items: center;
     gap: 90px;
-    position: relative;
-    top: 100px;
-    z-index: 1;
-
 }
 
 .event-item{
