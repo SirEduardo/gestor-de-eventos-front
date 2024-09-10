@@ -58,7 +58,6 @@ const EventDetail = async (id, userEmail) => {
         showLoading();
         const attendeeRes = await getAttendeeById(userEmail);
         hideLoading();
-        console.log(attendeeRes);
         
         const isAttending = attendeeRes.events.some(
           (attendedEvent) => attendedEvent._id === id
@@ -71,7 +70,6 @@ const EventDetail = async (id, userEmail) => {
           : "Confirmar Asistencia";
 
         confirmButton.addEventListener("click", async () => {
-          
           try {
             showLoading();
             const res = isAttending
