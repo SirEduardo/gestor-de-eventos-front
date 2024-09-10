@@ -8,6 +8,8 @@ export const doLogout = () => {
     if (confirmation){
         localStorage.removeItem("user")
         localStorage.removeItem("token")
+        localStorage.removeItem("userId")
+        localStorage.removeItem("userEmail")
         Header()
         Home()
     }
