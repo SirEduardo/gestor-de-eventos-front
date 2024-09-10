@@ -36,9 +36,10 @@ const Login = () => {
     })
   );
 
+  LoginForm(form)
   form.addEventListener("submit", doLogin)
 
-  LoginForm(form)
+  
   div.appendChild(form)
 }
 
