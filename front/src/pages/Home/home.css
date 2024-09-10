@@ -1,27 +1,41 @@
 #home{
     min-height: 100svh;
+    min-width: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;
+    color: white;
+    
 }
 .home-container{
     width: 100%;
-    height: 100svh;
-}
-#home img {
-    width: 100%;
-    height: 100svh;
-    opacity: 0.5;
-    object-fit: cover;
-}
-.text{
     display: flex;
     flex-direction: column;
-    position: absolute;
-    top: 0;
-    left: 20px;
+    margin: 40px;
 }
-.text p{
-    color: white;
+h1{
+    color: #579bfa;
+}
+.text{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#sports-section{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--hovered-background);
+    border-radius: 20px;
+    width: 70%;
+    padding: 20px;
+    margin-top: 50px; 
+}
+
+#home img{
+    width: 500px;
+    border-radius: 20px;
 }
