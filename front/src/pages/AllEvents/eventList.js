@@ -38,9 +38,15 @@ const EventList = async () => {
           hour: "2-digit",
           minute: "2-digit",
         });
+
+        let creatorName = ""
+        let creatorId = ""
         
-        const creatorName = event.createdBy[0].userName
-        const creatorId = event.createdBy[0]._id
+        if (event.createdBy && event.createdBy.length > 0) {
+          creatorName = event.createdBy[0].userName
+          creatorId = event.createdBy[0].id
+        
+        }
 
         const eventItem = document.createElement("div");
         eventItem.className = "event-item";
@@ -60,6 +66,7 @@ const EventList = async () => {
           eventList.innerHTML = "";
           EventDetail(event._id, userEmail);
         });
+      
 
         eventItem
           .querySelector(".delete-btn")
