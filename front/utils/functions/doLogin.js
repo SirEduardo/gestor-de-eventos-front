@@ -7,19 +7,19 @@ export const doLogin = async (e) => {
   e.preventDefault()
   
   const form = e.target;
-
   const email = form.querySelector('input#email').value;
   const password = form.querySelector('input#password').value;
 
+  
   if (!email || !password) {
       alert("Email and Password are required");
       return;
   }
 
-  const body =({
+  const body = {
       email,
       password
-  });
+  };
 
   const loadingElement = createLoading();
   document.body.appendChild(loadingElement);
