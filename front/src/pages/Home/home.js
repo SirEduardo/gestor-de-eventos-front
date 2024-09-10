@@ -9,11 +9,10 @@ const Home = () => {
     const div = createPage("home")
     div.innerHTML = `
    <div class ="home-container"> 
-     <img src ="https://png.pngtree.com/thumb_back/fh260/back_pic/04/07/48/465811cc88e057c.jpg">
+   <h1>Gestión de eventos deportivos en Salamanca</h1>
     <div class="text">
-    <h1>Gestión de eventos deportivos Salamanca</h1>
-    <section>
-        <p>Eventos deportivos grupales para diferentes niveles:</p>
+    <section id="sports-section">
+        <p>Eventos deportivos grupales a los que asistir u organizar tu mismo :</p>
         <ul id="sports-list"></ul>
     </section>
     </div>
@@ -22,9 +21,15 @@ const Home = () => {
     const sportsList = div.querySelector("#sports-list")
 
     allSports.forEach(sport => {
-        const li = document.createElement("li")
-        li.textContent = sport
-        sportsList.appendChild(li)
+        const div = document.createElement("div")
+        const name = document.createElement("p")
+        const img = document.createElement("img") 
+        name.textContent = sport.name
+        img.src = sport.image
+
+        div.appendChild(name)
+        div.appendChild(img)
+        sportsList.appendChild(div)
     })
 
 }
