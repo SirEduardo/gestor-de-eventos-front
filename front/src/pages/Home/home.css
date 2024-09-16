@@ -39,3 +39,22 @@ h1{
     width: 500px;
     border-radius: 20px;
 }
+
+@media (max-width:900px ) {
+    #home img {
+        width: 300px;
+        margin-right: 35px;
+    }
+}
+@media (max-width: 600px) {
+    #home img {
+        width: 250px;
+        margin-right: 35px;
+    }
+}
+@media (max-width: 500px) {
+    #home img {
+        width: 200px;
+        margin-right: 35px;
+    }
+}
