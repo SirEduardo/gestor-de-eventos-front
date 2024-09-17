@@ -3,12 +3,18 @@ import { createLoading } from "../../src/components/loading/loading";
 import Home from "../../src/pages/Home/home";
 import { fetchWrapper } from "../api/api";
 
-export const doLogin = async (e) => {
-  e.preventDefault()
+export const doLogin = async (e, bodyFetch) => {
+
+  let email
+  let password
+
+  if (!bodyFetch){
+    e.preventDefault()
   
-  const form = e.target;
-  const email = form.querySelector('input#email').value;
-  const password = form.querySelector('input#password').value;
+    const form = e.target;
+     email = form.querySelector('input#email').value;
+     password = form.querySelector('input#password').value;
+  }
 
   
   if (!email || !password) {
@@ -16,10 +22,13 @@ export const doLogin = async (e) => {
       return;
   }
 
-  const body = {
+  let body = {
       email,
       password
   };
+  if(bodyFetch){
+    body === body
+  }
 
   const loadingElement = createLoading();
   document.body.appendChild(loadingElement);
