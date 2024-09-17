@@ -1,5 +1,5 @@
 
-const API_URL = "https://project-10-back-gamma.vercel.app/api/v1/"
+const API_URL = "https://project-10-back-gamma.vercel.app/api/v1"
 
 
 export const fetchWrapper = async ({
