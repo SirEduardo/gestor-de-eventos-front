@@ -39,7 +39,7 @@ export const doRegister = async (e) => {
       const dataRes = await res.json();
       console.log("Registration successful:", dataRes);
 
-       await doLogin ({
+       await doLogin (null, {
         email,
         password
       })
