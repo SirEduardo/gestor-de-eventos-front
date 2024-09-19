@@ -2,33 +2,25 @@ import { Header } from "../../src/components/Header/Header";
 import { createLoading } from "../../src/components/loading/loading";
 import Home from "../../src/pages/Home/home";
 import { fetchWrapper } from "../api/api";
+import { storeUserData } from "../storage";
 
-export const doLogin = async (e, bodyFetch) => {
+export const doLogin = async (e) => {
+  e.preventDefault();
+  let email, password;
 
-  let email
-  let password
+  const form = e.target;
+  email = form.querySelector("input#email").value;
+  password = form.querySelector("input#password").value;
 
-  if (!bodyFetch){
-    e.preventDefault()
-  
-    const form = e.target;
-     email = form.querySelector('input#email').value;
-     password = form.querySelector('input#password').value;
-  }
-
-  
   if (!email || !password) {
-      alert("Email and Password are required");
-      return;
+    alert("Email and Password are required");
+    return;
   }
 
   let body = {
-      email,
-      password
+    email,
+    password,
   };
-  if(bodyFetch){
-    body === body
-  }
 
   const loadingElement = createLoading();
   document.body.appendChild(loadingElement);
@@ -47,28 +39,16 @@ export const doLogin = async (e, bodyFetch) => {
     if (!res.ok) {
       const errorData = await res.json();
       console.error("Error response:", errorData);
-      
+
       throw new Error(errorData.message || "Login failed. Please try again.");
     }
 
     const dataRes = await res.json();
-    console.log("Login successful:", dataRes);
+    storeUserData(dataRes.user, dataRes.token);
 
-    if (dataRes.user && dataRes.user.email) {
-      localStorage.setItem("user", dataRes.user.userName);
-      localStorage.setItem("userEmail", dataRes.user.email);
-      localStorage.setItem("userId", dataRes.user._id)
-
-      if (dataRes.token) {
-        localStorage.setItem("token", dataRes.token);
-        alert("Login successful");
-        Header();
-        Home();
-      } else {
-        alert("Authentication failed. Token not found.");
-      }
-    } else {
-      alert("User not found. Please register first.");
+    if (dataRes.user && dataRes.token) {
+      Header();
+      Home();
     }
   } catch (error) {
     console.error("Error during login:", error);
