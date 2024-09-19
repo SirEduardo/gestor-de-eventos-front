@@ -1,4 +1,5 @@
 import { createLoading } from "../../src/components/loading/loading";
+import Login from "../../src/pages/Login/login";
 import { fetchWrapper } from "../api/api";
 import { doLogin } from "./doLogin";
 
@@ -31,14 +32,18 @@ export const doRegister = async (e) => {
 
     if (res.error || !res.ok) {
       const errorData = await res.json().catch(() => ({ message: "Unknown error" }));
-      alert(errorData.message || "Error during registration.");
-      throw new Error(errorData.message || "Error during registration.");
+      if (res.status === 409 || errorData.message.includes("Este usuario ya existe")) {
+        alert("Este usuario ya está registrado. Por favor, inicia sesión.");
+        Login()
+      }
+    } else{
+      const dataRes = await res.json();
+      console.log("Registration successful:", dataRes);
+  
+      await doLogin(e, { email, password });
     }
 
-    const dataRes = await res.json();
-    console.log("Registration successful:", dataRes);
-
-    await doLogin(e, { email, password });
+ 
 
   } catch (error) {
     console.error("Error during registration:", error);
