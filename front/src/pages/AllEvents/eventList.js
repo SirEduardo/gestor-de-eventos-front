@@ -44,7 +44,7 @@ const EventList = async () => {
         
         if (event.createdBy && event.createdBy.length > 0) {
           creatorName = event.createdBy[0].userName
-          creatorId = event.createdBy[0].id
+          creatorId = event.createdBy[0]._id
         
         }
 
@@ -77,7 +77,7 @@ const EventList = async () => {
               return;
             }
 
-            if (!event.createdBy || event.createdBy.length === 0 || userId !== creatorId) {
+            if (!event.createdBy || event.createdBy.length === 0 || userId !== creatorId) {             
               alert("Este usuario no puede eliminar este evento")
               return
             }
